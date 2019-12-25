@@ -30,7 +30,7 @@ $(document).ready(() => {
   const $submenu = $('.js-submenu')
   const $recentArticles = $('.js-recent-articles')
   const $openSearch = $('.js-open-search')
-  const $closeSearch = $('.js-close-search')
+  const $closeSearch = $('.background-shadow')
   const $search = $('.js-search')
   const $inputSearch = $('.js-input-search')
   const $searchResults = $('.js-search-results')
@@ -125,6 +125,10 @@ $(document).ready(() => {
   })
 
   $openSearch.click(() => {
+    $inputSearch.val('')
+    $searchResults.hide()
+    $searchNoResults.hide()
+    $search.removeClass('list-wrapper')
     $search.addClass('opened')
     setTimeout(() => {
       $inputSearch.focus()
@@ -132,24 +136,24 @@ $(document).ready(() => {
     toggleScrollVertical()
   })
 
-  $closeSearch.click(() => {
-    $inputSearch.blur()
+  $closeSearch.click((e) => {
     $search.removeClass('opened')
-    toggleScrollVertical()
   })
 
   $inputSearch.keyup(() => {
+
     if ($inputSearch.val().length > 0 && fuse) {
       const results = fuse.search($inputSearch.val())
       let htmlString = ''
+
+      $search.addClass('list-wrapper')
 
       if (results.length > 0) {
         for (var i = 0, len = results.length; i < len; i++) {
           htmlString += `
           <article class="m-result">\
             <a href="${results[i].url}" class="m-result__link">\
-              <h3 class="m-result__title">${results[i].title}</h3>\
-              <span class="m-result__date">${formatDate(results[i].published_at)}</span>\
+              <div class="m-result__title">${results[i].title}</div>\
             </a>\
           </article>`
         }
@@ -163,6 +167,8 @@ $(document).ready(() => {
         $searchNoResults.show()
       }
     } else {
+      $search.removeClass('list-wrapper')
+
       $searchResults.html('')
       $searchResults.hide()
       $searchNoResults.hide()
