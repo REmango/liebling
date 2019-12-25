@@ -15,7 +15,7 @@
   -webkit-overflow-scrolling: touch;
   .background-shadow {
     z-index: 50;
-    background: #324750;
+    background: var(--search-shadow-background-color);
     opacity: .6;
     position: absolute;
     top: 0;

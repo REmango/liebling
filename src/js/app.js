@@ -138,6 +138,8 @@ $(document).ready(() => {
 
   $closeSearch.click((e) => {
     $search.removeClass('opened')
+    toggleScrollVertical()
+
   })
 
   $inputSearch.keyup(() => {
