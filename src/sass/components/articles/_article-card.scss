@@ -3,7 +3,6 @@
   flex-direction: column;
   position: relative;
   margin-bottom: 20px;
-  height: 400px;
   background-color: var(--background-color);
   border-radius: 10px;
   border: 1px solid var(--secondary-border-color);
@@ -24,7 +23,6 @@
 
   @include respond-to('medium') {
     width: calc((100% / 2) - 20px);
-    height: 420px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -81,15 +79,43 @@
     content: '';
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 0;
     bottom: 0;
-    left: 10px;
+    left: 0;
     border-radius: 10px;
     @include bs(var(--article-shadow-normal));
     @include transition(all .25s cubic-bezier(.02,.01,.47,1));
   }
+
 }
 
+.m-article-card__tag {
+  margin: 0;
+  border-radius: 15px;
+  background: #2ec4b6;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  letter-spacing: 0.2px;
+  max-width: calc(100% - 40px);
+  width: auto;
+  /* Fallback for non-webkit */
+  white-space: nowrap;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+
+  @include respond-to('medium') {
+    top: 20px;
+    left: 25px;
+  }
+}
 .m-article-card__picture {
   position: relative;
   height: 200px;
@@ -158,7 +184,11 @@
     background-size: cover;
   }
 }
-
+.post-card-excerpt {
+  color:#999;
+  padding-top: 8px;
+  font-size: 14px;
+}
 .m-article-card__featured {
   display: flex;
   align-items: center;
@@ -209,22 +239,18 @@
     }
   }
 }
-
-.m-article-card__tag {
-  position: absolute;
-  top: $mobile-space;
-  left: $mobile-space;
-  color: var(--link-color);
-  letter-spacing: 0.2px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  @include strip(1, 14px, 1.3, calc(100% - 40px));
-
-  @include respond-to('medium') {
-    top: 25px;
-    left: 25px;
-  }
+.post-footer{
+  border-top: 1px solid var(--post-footer-border-color);
+  -webkit-box-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: flex;
+  height: 42px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 0 20px;
 }
+
 
 .m-article-card__info-link {
   display: flex;

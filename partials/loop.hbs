@@ -37,13 +37,20 @@
             {{title}}
           </h2>
         </div>
+        <section class="post-card-excerpt">
+          {{#if feature_image}}
+            <p>{{excerpt words="20"}}</p>
+          {{else}}
+            <p>{{excerpt words="24"}}</p>
+          {{/if}}
+        </section>
         <div class="m-article-card__timestamp">
-          <span>{{date published_at timeago="true"}}</span>
-          <span>&bull;</span>
-          <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
         </div>
       </a>
     </div>
+    <footer class="post-footer">
+      <span>{{date published_at timeago="true"}}</span>
+    </footer>
   </article>
   {{#is "post"}}
     </div>
